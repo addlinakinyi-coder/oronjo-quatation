@@ -84,20 +84,20 @@
       overflow: hidden;
     }
 
-    /* Central SVG Background Watermark */
+    /* Central Oronjo Logo SVG Background Watermark */
     .watermark-container {
       position: absolute;
-      top: 45%;
+      top: 52%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 380px;
-      height: 380px;
-      opacity: 0.11;
+      width: 420px;
+      height: 420px;
+      opacity: 0.12;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Ensure all text content floats above the background watermark */
+    /* Ensure text content floats clearly above the watermark */
     .content-wrapper {
       position: relative;
       z-index: 1;
@@ -317,13 +317,32 @@
   <!-- A4 Document Page -->
   <div class="document-page">
 
-    <!-- Faded Central Solar Logo Watermark (Inline SVG - No image file upload required) -->
+    <!-- Central Oronjo Logo Emblem Background Watermark (Inline SVG Vector) -->
     <div class="watermark-container">
-      <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="80" fill="none" stroke="#1b4d2e" stroke-width="5"/>
-        <path d="M100 10 L100 25 M100 175 L100 190 M10 100 L25 100 M175 100 L190 100 M36 36 L47 47 M153 153 L164 164 M36 164 L47 153 M153 36 L164 47" stroke="#1b4d2e" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="100" cy="100" r="45" fill="none" stroke="#1b4d2e" stroke-width="4"/>
-        <text x="100" y="108" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="28" fill="#1b4d2e" text-anchor="middle">OGES</text>
+      <svg viewBox="0 0 300 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#1b4d2e">
+          <!-- Top Sunburst Crest -->
+          <circle cx="150" cy="52" r="28"/>
+          <path d="M150 12 L150 20 M120 22 L126 28 M180 22 L174 28 M98 48 L106 50 M202 48 L194 50 M108 76 L114 71 M192 76 L186 71 M150 12 L144 24 L156 24 Z" stroke="#1b4d2e" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="120,20 128,30 116,28"/>
+          <polygon points="180,20 184,28 172,30"/>
+          <polygon points="98,46 110,50 102,56"/>
+          <polygon points="202,46 198,56 190,50"/>
+
+          <!-- Left Ring (Grid Window) -->
+          <path d="M120 75 A 65 65 0 1 0 120 205 A 65 65 0 1 0 120 75 Z M120 95 A 45 45 0 1 1 120 185 A 45 45 0 1 1 120 95 Z" fill-rule="evenodd"/>
+          <!-- Grid Inner Crosslines -->
+          <path d="M78 140 A 42 42 0 0 1 120 98 L120 182 A 42 42 0 0 1 78 140 Z" fill="none" stroke="#1b4d2e" stroke-width="8"/>
+          <line x1="78" y1="140" x2="120" y2="140" stroke="#fbf8ef" stroke-width="4"/>
+          <line x1="99" y1="99" x2="99" y2="181" stroke="#fbf8ef" stroke-width="4"/>
+
+          <!-- Right Interlocking Ring & Turbine Pinwheel -->
+          <path d="M180 75 A 65 65 0 1 0 180 205 A 65 65 0 1 0 180 75 Z M180 95 A 45 45 0 1 1 180 185 A 45 45 0 1 1 180 95 Z" fill-rule="evenodd"/>
+          <!-- Turbine Spiral Blades -->
+          <path d="M180 140 C195 120 215 125 220 135 C205 145 200 160 180 140 Z" fill="#1b4d2e"/>
+          <path d="M180 140 C165 160 145 155 140 145 C155 135 160 120 180 140 Z" fill="#1b4d2e"/>
+          <path d="M180 140 C200 155 195 175 185 180 C175 165 160 160 180 140 Z" fill="#1b4d2e"/>
+        </g>
       </svg>
     </div>
 
@@ -389,7 +408,7 @@
             <td class="col-desc" contenteditable="true">Solar panels (620 W)</td>
             <td class="col-qty" contenteditable="true" oninput="calculateTotals()">9</td>
             <td class="col-price" contenteditable="true" oninput="calculateTotals()">12,500</td>
-            <td class="col-total">100,000</td>
+            <td class="col-total">112,500</td>
             <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
           </tr>
           <tr>
@@ -468,7 +487,7 @@
         <tfoot>
           <tr class="total-row">
             <td colspan="4">TOTAL QUOTATION</td>
-            <td id="grandTotal" style="text-align: right;">KSh 390,350</td>
+            <td id="grandTotal" style="text-align: right;">KSh 402,850</td>
             <td class="col-action"></td>
           </tr>
         </tfoot>
@@ -506,7 +525,6 @@
   <script>
     function parseNumber(text) {
       if (!text) return 0;
-      // Extract numbers (including decimals) from text string
       let cleaned = text.toString().replace(/[^0-9.]/g, '');
       return parseFloat(cleaned) || 0;
     }
@@ -522,8 +540,6 @@
 
       for (let i = 0; i < rows.length; i++) {
         let cells = rows[i].getElementsByTagName('td');
-        
-        // Update row numbers
         cells[0].innerText = i + 1;
 
         let qtyText = cells[2].innerText;
@@ -532,10 +548,7 @@
         let qty = parseNumber(qtyText);
         let price = parseNumber(priceText);
 
-        // Special handling for panels row calculation if qty is 9 and unit price 12,500
         let rowTotal = qty * price;
-        
-        // Update row total cell
         cells[4].innerText = formatNumber(rowTotal);
         grandTotal += rowTotal;
       }
@@ -566,7 +579,6 @@
       calculateTotals();
     }
 
-    // Initialize calculation on page load
     window.onload = calculateTotals;
   </script>
 </body>
