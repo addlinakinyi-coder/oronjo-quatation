@@ -1,1 +1,586 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Power System Installation Quotation - Oronjo Green Energy Solution</title>
+  <style>
+    :root {
+      --primary-green: #1b4d2e;
+      --secondary-green: #2e7d32;
+      --accent-gold: #c5a059;
+      --bg-cream: #fbf8ef;
+      --light-gold: #f5eedc;
+      --border-color: #d1c7b7;
+      --text-dark: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #e5e5e5;
+      color: var(--text-dark);
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Floating Action Bar for Web Controls */
+    .action-bar {
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-bar h2 {
+      font-size: 16px;
+      color: var(--primary-green);
+    }
+
+    .btn {
+      background-color: var(--primary-green);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-green);
+    }
+
+    .btn-add {
+      background-color: #2b7a4b;
+    }
+
+    /* Main Document Page Container */
+    .document-page {
+      background-color: var(--bg-cream);
+      width: 100%;
+      max-width: 800px;
+      padding: 35px 35px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Central Oronjo Logo SVG Background Watermark */
+    .watermark-container {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ensure text content floats clearly above the watermark */
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Section */
+    .header-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+
+    .company-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-green);
+      letter-spacing: 0.5px;
+    }
+
+    .company-subtitle {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--primary-green);
+      letter-spacing: 0.3px;
+      margin-top: 3px;
+    }
+
+    .contact-box {
+      background-color: var(--light-gold);
+      border: 1px solid var(--accent-gold);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      text-align: right;
+      color: #333333;
+    }
+
+    /* Dark Green Banner Header */
+    .banner-title {
+      background-color: var(--primary-green);
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .banner-title h1 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .banner-title p {
+      font-size: 12px;
+      margin-top: 3px;
+      font-weight: 400;
+      opacity: 0.95;
+    }
+
+    /* Greeting & Intro Text */
+    .intro-text {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* Quotation Table */
+    .quote-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0px;
+      font-size: 12.5px;
+    }
+
+    .quote-table th {
+      background-color: var(--primary-green);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: left;
+      border: 1px solid var(--primary-green);
+    }
+
+    .quote-table td {
+      border: 1px solid var(--border-color);
+      padding: 7px 10px;
+    }
+
+    .quote-table tr:nth-child(even) td {
+      background-color: rgba(245, 238, 220, 0.4);
+    }
+
+    .quote-table tr:nth-child(odd) td {
+      background-color: rgba(251, 248, 239, 0.4);
+    }
+
+    .quote-table .col-no { width: 5%; text-align: center; font-weight: 600; }
+    .quote-table .col-desc { width: 45%; }
+    .quote-table .col-qty { width: 12%; text-align: center; }
+    .quote-table .col-price { width: 18%; text-align: right; }
+    .quote-table .col-total { width: 20%; text-align: right; font-weight: 600; }
+    .quote-table .col-action { width: 5%; text-align: center; }
+
+    /* Total Row */
+    .total-row td {
+      background-color: var(--primary-green) !important;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 10px;
+      border: 1px solid var(--primary-green);
+    }
+
+    /* Editable Fields Styling */
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 2px;
+      transition: background 0.2s ease;
+    }
+
+    [contenteditable="true"]:hover {
+      background-color: rgba(197, 160, 89, 0.2);
+    }
+
+    [contenteditable="true"]:focus {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 0 2px var(--accent-gold);
+    }
+
+    /* Terms and Conditions Box */
+    .terms-box {
+      margin-top: 20px;
+      background-color: rgba(245, 238, 220, 0.6);
+      border: 1px solid var(--accent-gold);
+      border-radius: 4px;
+      padding: 12px 15px;
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    .terms-box h3 {
+      font-size: 12px;
+      color: #8b5a00;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .terms-box ul {
+      margin-left: 18px;
+    }
+
+    /* Sign-off & Footer */
+    .closing-section {
+      margin-top: 20px;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .footer-line {
+      margin-top: 35px;
+      border-top: 1px solid var(--accent-gold);
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--primary-green);
+    }
+
+    .delete-btn {
+      color: #d32f2f;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      background: none;
+    }
+
+    /* Print Styles (Hides web controls and formats for A4) */
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+
+      .action-bar, .col-action, .delete-btn {
+        display: none !important;
+      }
+
+      .document-page {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Controls Bar -->
+  <div class="action-bar">
+    <h2>Quotation Generator</h2>
+    <div>
+      <button class="btn btn-add" onclick="addNewRow()">+ Add Row</button>
+      <button class="btn" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <!-- A4 Document Page -->
+  <div class="document-page">
+
+    <!-- Central Oronjo Logo Emblem Background Watermark (Inline SVG Vector) -->
+    <div class="watermark-container">
+      <svg viewBox="0 0 300 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#1b4d2e">
+          <!-- Top Sunburst Crest -->
+          <circle cx="150" cy="52" r="28"/>
+          <path d="M150 12 L150 20 M120 22 L126 28 M180 22 L174 28 M98 48 L106 50 M202 48 L194 50 M108 76 L114 71 M192 76 L186 71 M150 12 L144 24 L156 24 Z" stroke="#1b4d2e" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="120,20 128,30 116,28"/>
+          <polygon points="180,20 184,28 172,30"/>
+          <polygon points="98,46 110,50 102,56"/>
+          <polygon points="202,46 198,56 190,50"/>
+
+          <!-- Left Ring (Grid Window) -->
+          <path d="M120 75 A 65 65 0 1 0 120 205 A 65 65 0 1 0 120 75 Z M120 95 A 45 45 0 1 1 120 185 A 45 45 0 1 1 120 95 Z" fill-rule="evenodd"/>
+          <!-- Grid Inner Crosslines -->
+          <path d="M78 140 A 42 42 0 0 1 120 98 L120 182 A 42 42 0 0 1 78 140 Z" fill="none" stroke="#1b4d2e" stroke-width="8"/>
+          <line x1="78" y1="140" x2="120" y2="140" stroke="#fbf8ef" stroke-width="4"/>
+          <line x1="99" y1="99" x2="99" y2="181" stroke="#fbf8ef" stroke-width="4"/>
+
+          <!-- Right Interlocking Ring & Turbine Pinwheel -->
+          <path d="M180 75 A 65 65 0 1 0 180 205 A 65 65 0 1 0 180 75 Z M180 95 A 45 45 0 1 1 180 185 A 45 45 0 1 1 180 95 Z" fill-rule="evenodd"/>
+          <!-- Turbine Spiral Blades -->
+          <path d="M180 140 C195 120 215 125 220 135 C205 145 200 160 180 140 Z" fill="#1b4d2e"/>
+          <path d="M180 140 C165 160 145 155 140 145 C155 135 160 120 180 140 Z" fill="#1b4d2e"/>
+          <path d="M180 140 C200 155 195 175 185 180 C175 165 160 160 180 140 Z" fill="#1b4d2e"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Main Quotation Document Content -->
+    <div class="content-wrapper">
+
+      <!-- Header Section -->
+      <table class="header-table">
+        <tr>
+          <td style="vertical-align: top;">
+            <div class="company-title" contenteditable="true">ORONJO GREEN ENERGY SOLUTION</div>
+            <div class="company-subtitle" contenteditable="true">SOLAR POWER • ELECTRICAL INSTALLATION • ENERGY SOLUTIONS</div>
+          </td>
+          <td style="vertical-align: top; width: 230px;">
+            <div class="contact-box">
+              <div><strong>Contact:</strong> <span contenteditable="true">0713604062</span></div>
+              <div><strong>Quotation Date:</strong> <span contenteditable="true">12 October 2026</span></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Dark Green Banner Bar -->
+      <div class="banner-title">
+        <h1>SOLAR POWER SYSTEM INSTALLATION QUOTATION</h1>
+        <p>
+          <strong>Prepared for:</strong> <span contenteditable="true">Mr. William Wamiri</span> &nbsp;|&nbsp; 
+          <strong>Project Location:</strong> <span contenteditable="true">Kisumu, Kenya</span>
+        </p>
+      </div>
+
+      <!-- Intro Paragraph -->
+      <div class="intro-text">
+        <p><strong>Dear Sir/Madam,</strong></p>
+        <p contenteditable="true">
+          We are pleased to submit our quotation for the supply and installation of a solar power system at your premises in Kisumu. The proposed system includes the equipment, electrical components, cabling, accessories, and installation services itemised below.
+        </p>
+      </div>
+
+      <!-- Itemized Table -->
+      <table class="quote-table" id="itemsTable">
+        <thead>
+          <tr>
+            <th class="col-no">No.</th>
+            <th class="col-desc">Description</th>
+            <th class="col-qty">Qty</th>
+            <th class="col-price">Unit Price (KSh)</th>
+            <th class="col-total">Total (KSh)</th>
+            <th class="col-action"></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td class="col-no">1</td>
+            <td class="col-desc" contenteditable="true">Solar inverter</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">47,000</td>
+            <td class="col-total">47,000</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">2</td>
+            <td class="col-desc" contenteditable="true">Solar panels (620 W)</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">9</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">12,500</td>
+            <td class="col-total">112,500</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">3</td>
+            <td class="col-desc" contenteditable="true">Lithium battery</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">170,000</td>
+            <td class="col-total">170,000</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">4</td>
+            <td class="col-desc" contenteditable="true">Solar installation accessories</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1 lot</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">8,750</td>
+            <td class="col-total">8,750</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">5</td>
+            <td class="col-desc" contenteditable="true">DC protection devices</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">4,500</td>
+            <td class="col-total">4,500</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">6</td>
+            <td class="col-desc" contenteditable="true">PV cable</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">40 m</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">160</td>
+            <td class="col-total">6,400</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">7</td>
+            <td class="col-desc" contenteditable="true">AC cable (yellow, red and black)</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">60 m</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">180</td>
+            <td class="col-total">10,800</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">8</td>
+            <td class="col-desc" contenteditable="true">AC accessories</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1 lot</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">2,750</td>
+            <td class="col-total">2,750</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">9</td>
+            <td class="col-desc" contenteditable="true">Earthing protection</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1 lot</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">5,150</td>
+            <td class="col-total">5,150</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">10</td>
+            <td class="col-desc" contenteditable="true">Miscellaneous materials</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1 lot</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">5,000</td>
+            <td class="col-total">5,000</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+          <tr>
+            <td class="col-no">11</td>
+            <td class="col-desc" contenteditable="true">Labour and installation</td>
+            <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1 lot</td>
+            <td class="col-price" contenteditable="true" oninput="calculateTotals()">30,000</td>
+            <td class="col-total">30,000</td>
+            <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="4">TOTAL QUOTATION</td>
+            <td id="grandTotal" style="text-align: right;">KSh 402,850</td>
+            <td class="col-action"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Terms & Conditions Box -->
+      <div class="terms-box">
+        <h3>TERMS AND CONDITIONS</h3>
+        <ul>
+          <li contenteditable="true">This quotation is based on the listed materials and quantities.</li>
+          <li contenteditable="true">Any additional materials or work outside this quotation will be discussed and agreed upon before implementation.</li>
+          <li contenteditable="true">Installation will be carried out professionally, subject to those conditions and applicable safety requirements.</li>
+          <li contenteditable="true">Transport to site and any applicable items are not included unless agreed in writing.</li>
+        </ul>
+      </div>
+
+      <!-- Sign-off & Footer -->
+      <div class="closing-section">
+        <p contenteditable="true">Thank you for considering Oronjo Green Energy Solution. We look forward to providing you with reliable renewable energy solutions.</p>
+        <br>
+        <p><strong>Yours faithfully,</strong></p>
+        <p contenteditable="true"><strong>Oronjo Green Energy Solution</strong></p>
+        <p contenteditable="true">Contact: 0713604062</p>
+      </div>
+
+      <div class="footer-line">
+        <span contenteditable="true">ORONJO GREEN ENERGY SOLUTION</span>
+        <span contenteditable="true">Solar Power System Quotation</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Auto-calculation Script -->
+  <script>
+    function parseNumber(text) {
+      if (!text) return 0;
+      let cleaned = text.toString().replace(/[^0-9.]/g, '');
+      return parseFloat(cleaned) || 0;
+    }
+
+    function formatNumber(num) {
+      return num.toLocaleString('en-US');
+    }
+
+    function calculateTotals() {
+      let tbody = document.getElementById('tableBody');
+      let rows = tbody.getElementsByTagName('tr');
+      let grandTotal = 0;
+
+      for (let i = 0; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName('td');
+        cells[0].innerText = i + 1;
+
+        let qtyText = cells[2].innerText;
+        let priceText = cells[3].innerText;
+
+        let qty = parseNumber(qtyText);
+        let price = parseNumber(priceText);
+
+        let rowTotal = qty * price;
+        cells[4].innerText = formatNumber(rowTotal);
+        grandTotal += rowTotal;
+      }
+
+      document.getElementById('grandTotal').innerText = 'KSh ' + formatNumber(grandTotal);
+    }
+
+    function addNewRow() {
+      let tbody = document.getElementById('tableBody');
+      let rowCount = tbody.getElementsByTagName('tr').length + 1;
+
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="col-no">${rowCount}</td>
+        <td class="col-desc" contenteditable="true">New Item Description</td>
+        <td class="col-qty" contenteditable="true" oninput="calculateTotals()">1</td>
+        <td class="col-price" contenteditable="true" oninput="calculateTotals()">0</td>
+        <td class="col-total">0</td>
+        <td class="col-action"><button class="delete-btn" onclick="deleteRow(this)">✕</button></td>
+      `;
+      tbody.appendChild(tr);
+      calculateTotals();
+    }
+
+    function deleteRow(btn) {
+      let row = btn.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+      calculateTotals();
+    }
+
+    window.onload = calculateTotals;
+  </script>
+</body>
+</html>
